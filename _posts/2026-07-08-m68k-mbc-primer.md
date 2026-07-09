@@ -147,7 +147,7 @@ This boots to execution of "Hello world"
 
 ### Step 1
 
-Initial vasm command generated output that needed some modiications. sLoader on mbc rejects the data with error. Source code o sloader indicates that only 0xd is correctly parsed as line end. 
+Initial vasm command generated output that needed some modifications. sLoader on mbc rejects the data with error. Source code of sloader indicates that only 0xd is correctly parsed as line end. 
 So the output from 
 ```vasmm68k_mot -m68008 -Fsrec -s19  -o dmon.hex dmon.s```
 requires processing
