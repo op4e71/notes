@@ -142,10 +142,19 @@ img {
     clear: both;
 }
 
-div.highlighter-rouge {
+div.highlighter-rouge, 
+div.highlighter-rouge pre, 
+div.highlighter-rouge code,
+pre.highlight {
   border: none !important;
+  box-shadow: none !important;
+}
+
+/* Re-apply a single frame to the outer wrapper only */
+div.highlighter-rouge {
+  border: 1px solid #e1e4e8 !important; /* Adjust color to match theme */
+  border-radius: 6px !important;
   padding: 0 !important;
-  background: transparent !important;
 }
 
 /*********************/
