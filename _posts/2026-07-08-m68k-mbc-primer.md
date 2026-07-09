@@ -16,7 +16,7 @@ Resources:
 
 Assembler Hello world
 
-```asm
+```text
 ; IOS equates
 IOBASE      EQU     $FFFFC              ; Address base for the I/O ports
 EXCWR_PORT  EQU     IOBASE+0            ; Address of the EXECUTE WRITE OPCODE write port
@@ -175,7 +175,7 @@ This outputs hex that can be fed into sLoader directly ater translation o 0xa to
 On monitoring terminal:
 ```cat /dev/cu.usbserial-0001```
 
-Output from the board or reerence
+Output from the board for reference
 
 ```text
 68k-MBC - A091020-R140221
