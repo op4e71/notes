@@ -142,36 +142,36 @@ img {
     clear: both;
 }
 
-
-/* 1. Global strip of all nested code block borders */
-div.highlighter-rouge pre,
-div.highlighter-rouge code,
-div.highlighter-rouge pre code {
-  border: 0 none !important;
-  border-style: none !important;
-  outline: 0 !important;
+/* 1. Forceful destruction of all inner code element borders */
+div.highlighter-rouge *, 
+figure.highlight *, 
+pre, 
+code, 
+.highlight * {
+  border: 0 none transparent !important;
+  outline: 0 none transparent !important;
   box-shadow: none !important;
+  background-image: none !important;
+}
+
+/* 2. Re-blank inner wrappers so they don't inherit default themes */
+div.highlighter-rouge pre,
+div.highlighter-rouge code {
   background: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* 2. Target specific theme elements inside the rouge container */
-div.highlighter-rouge * {
-  border: 0 none !important;
-  box-shadow: none !important;
-}
-
-/* 3. Re-apply a single outer frame neatly */
+/* 3. Re-apply ONE single crisp outer wrapper frame */
 div.highlighter-rouge {
-  background-color: #f7f7f7 !important; /* Nice gray code box background */
-  border: 1px solid #e1e4e8 !important;   /* Singular outer frame line */
+  background-color: #f7f7f7 !important; /* Soft gray interior box color */
+  border: 1px solid #e1e4e8 !important;   /* Singular border line */
   border-radius: 6px !important;
-  padding: 14px !important;               /* Clean internal text spacing */
-  margin: 20px 0 !important;              /* Vertical space separating paragraphs */
-  overflow-x: auto !important;            /* Horizontal scrollbar for long commands */
+  padding: 14px !important;               /* Clean internal padding */
+  margin: 20px 0 !important;              /* Spacing from text */
+  overflow-x: auto !important;            /* Side-scroll for long lines */
+  display: block !important;
 }
-
 
 
 /*********************/
