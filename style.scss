@@ -173,6 +173,24 @@ div.highlighter-rouge code {
 //  display: block !important;
 // }
 
+/* Erase the inner theme outline from Jekyll highlighter blocks */
+.highlighter-rouge pre.highlight {
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Ensure the outer box maintains a singular, neat code format */
+div.highlighter-rouge {
+  background-color: #f7f7f7 !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  padding: 14px !important;
+  margin: 20px 0 !important;
+  overflow-x: auto !important;
+}
 
 /*********************/
 /* LAYOUT / SECTIONS */
