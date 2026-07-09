@@ -6,8 +6,11 @@ title: m68k-MBC notes
 Resources:
 
 [PCBWAY Project site](https://www.pcbway.com/project/shareproject/68k_MBC__a_3_ICs_68008_homebrew_computer.html)
+
 [Tindie](https://www.tindie.com/products/denjhang/68k-mbc-a-3-ics-68008-homebrew-computer/)
+
 [68k SBC](https://elephantandchicken.co.uk/stuffandnonsense/?p=927)
+
 [vasm site](http://sun.hasenbraten.de/vasm/release/vasm.html)
 
 
@@ -137,34 +140,45 @@ $ ascii-xfr -s -l 100 -c 5 dmon23.hex > /dev/ttyUSB0
 ```
 
 ASCII upload of "dmon23.hex"
+
 Line delay: 100 ms, character delay 5 ms
+
 This boots to execution of "Hello world"
 
-Step 1
-The output from 
+### Step 1
+
+Initial vasm command generated output that needed some modiications. sLoader on mbc rejects the data with error. Source code o sloader indicates that only 0xd is correctly parsed as line end. 
+So the output from 
 ```vasmm68k_mot -m68008 -Fsrec -s19  -o dmon.hex dmon.s```
 requires processing
-\n needs to be replaced with \r (0xa -> 0xd)
-sLoader requires 24 bit addressing so the last line with S9 record needs to be replaced with S8 record.
-the code starts at $100 so the last line needs to be replaced with S804000100FA
+- \n needs to be replaced with \r (0xa -> 0xd)
+- sLoader requires 24 bit addressing so the last line with S9 record needs to be replaced with S8 record.
+- the code starts at $100 so the last line needs to be replaced with S804000100FA
 
-Step 2
-vasm can generate 24bit addresses, use flag -s28 to vasm
-then only EOL needs to be modified in output and start address needs to be modified
+### Step 2
 
-Step 3
-ORG start in source is not applied in the output, use -exec flag to vasm
+vasm can generate 24bit addresses (see vasm docs), use flag -s28 to vasm.
+
+Then in the output only EOL needs to be modified and start address needs to be modified
+
+### Step 3
+ORG directive in source is not applied in the output, use -exec flag to vasm
 
 ```vasmm68k_mot -m68008 -Fsrec -s28 -exec=_start -o dmon.hex dmon.s```
 
-This outputs hex that can be fed into sLoader directly
+This outputs hex that can be fed into sLoader directly ater translation o 0xa to 0xd
+
+```tr '\n' '\r' < dmon.hex > dmon_2.hex```
 
 ```ascii-xfr -s -l 20  dmon_2.hex > /dev/cu.usbserial-0001```
 
 On monitoring terminal:
 ```cat /dev/cu.usbserial-0001```
 
-```68k-MBC - A091020-R140221
+Output from the board or reerence
+
+```text
+68k-MBC - A091020-R140221
 IOS - I/O Subsystem - S310121-R231021
 
 IOS: Full HW configuration detected
