@@ -142,32 +142,37 @@ img {
     clear: both;
 }
 
-/* 1. Complete wipe of all inner borders, frames, and padding */
+
+/* 1. Global strip of all nested code block borders */
 div.highlighter-rouge pre,
 div.highlighter-rouge code,
-div.highlighter-rouge .highlight,
-div.highlighter-rouge .highlight pre,
-div.highlighter-rouge .highlight code,
-.highlight pre,
-.highlight code {
-  border: 0 !important;
-  border-width: 0 !important;
-  outline: none !important;
+div.highlighter-rouge pre code {
+  border: 0 none !important;
+  border-style: none !important;
+  outline: 0 !important;
   box-shadow: none !important;
-  background: transparent !important; /* Forces inner layers to be invisible */
+  background: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* 2. Re-apply a single clean frame to the outermost wrapper only */
-div.highlighter-rouge {
-  background-color: #f7f7f7 !important; /* Nice gray interior */
-  border: 1px solid #e1e4e8 !important;   /* Singular crisp outline */
-  border-radius: 6px !important;
-  padding: 14px !important;               /* Creates clean whitespace around code */
-  margin: 20px 0 !important;              /* Spacing above and below the block */
-  overflow-x: auto !important;            /* Keeps long lines scrollable sideways */
+/* 2. Target specific theme elements inside the rouge container */
+div.highlighter-rouge * {
+  border: 0 none !important;
+  box-shadow: none !important;
 }
+
+/* 3. Re-apply a single outer frame neatly */
+div.highlighter-rouge {
+  background-color: #f7f7f7 !important; /* Nice gray code box background */
+  border: 1px solid #e1e4e8 !important;   /* Singular outer frame line */
+  border-radius: 6px !important;
+  padding: 14px !important;               /* Clean internal text spacing */
+  margin: 20px 0 !important;              /* Vertical space separating paragraphs */
+  overflow-x: auto !important;            /* Horizontal scrollbar for long commands */
+}
+
+
 
 /*********************/
 /* LAYOUT / SECTIONS */
