@@ -5,15 +5,16 @@ title: m68k-MBC notes
 
 Resources:
 
-[PCBWAY Project site] (https://www.pcbway.com/project/shareproject/68k_MBC__a_3_ICs_68008_homebrew_computer.html)
-[Tindie] (https://www.tindie.com/products/denjhang/68k-mbc-a-3-ics-68008-homebrew-computer/)
-[68k SBC] (https://elephantandchicken.co.uk/stuffandnonsense/?p=927)
-[vasm site] (http://sun.hasenbraten.de/vasm/release/vasm.html)
+[PCBWAY Project site](https://www.pcbway.com/project/shareproject/68k_MBC__a_3_ICs_68008_homebrew_computer.html)
+[Tindie](https://www.tindie.com/products/denjhang/68k-mbc-a-3-ics-68008-homebrew-computer/)
+[68k SBC](https://elephantandchicken.co.uk/stuffandnonsense/?p=927)
+[vasm site](http://sun.hasenbraten.de/vasm/release/vasm.html)
 
 
 Assembler Hello world
 
-```; IOS equates
+```asm
+; IOS equates
 IOBASE      EQU     $FFFFC              ; Address base for the I/O ports
 EXCWR_PORT  EQU     IOBASE+0            ; Address of the EXECUTE WRITE OPCODE write port
 EXCRD_PORT  EQU     IOBASE+0            ; Address of the EXECUTE READ OPCODE read port
@@ -103,7 +104,7 @@ _stack_top  equ $00080000           ; e.g., 512 KB RAM top (adjust to your SBC)
 ```
 
 Assemble (use vscode Amiga assembly extension assembler):
-```
+```bash
 .vscode/extensions/prb28.amiga-assembly-1.8.13/resources/bin/linux/vasmm68k_mot -m68008 -Fsrec -s19  -o dmon.hex dmon.s
 sed -i 's/$/\r/' dmon2.hex 
 tr '\n' ' ' < dmon2.hex > dmon22.hex
@@ -113,7 +114,8 @@ s-loader on m68k-mbc requires line end
 
 the output: 
 
-```S00700007365673089
+```text
+S00700007365673089
 S1230000000800000000010000000146000001460000014600000146000001460000014629
 S1230020000001460000014600000146000001460000014600000146000001460000014684
 S1230040000001460000014600000146000001460000014600000146000001460000014664
@@ -130,7 +132,7 @@ S804000100FA
 
 EOL is 0xd
 
-```
+```bash
 $ ascii-xfr -s -l 100 -c 5 dmon23.hex > /dev/ttyUSB0 
 ```
 
