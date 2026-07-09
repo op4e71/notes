@@ -1,0 +1,16 @@
+// Reset internal code borders in Minima theme
+pre, code {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+// Keep the single frame on the parent highlighter block
+div.highlighter-rouge {
+  background-color: #f7f7f7 !important;
+  border: 1px solid #e1e4e8 !important;
+  border-radius: 6px !important;
+  padding: 14px !important;
+  margin: 20px 0 !important;
+  overflow-x: auto !important;
+}
+
