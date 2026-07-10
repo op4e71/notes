@@ -10,6 +10,7 @@ code,
   background: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
+  font-size: 0.85em !important;
   font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
@@ -18,8 +19,8 @@ div.highlighter-rouge {
   background-color: #f7f7f7 !important; /* Standard crisp light gray */
   border: 1px solid #e1e4e8 !important;   /* Single thin border frame */
   border-radius: 6px !important;
-  padding: 14px !important;               /* Uniform spacing around syntax text */
-  margin: 20px 0 !important;              /* Spacing between text paragraphs */
+  padding: 10px 12px !important;               /* Uniform spacing around syntax text */
+  margin: 18px 0 !important;              /* Spacing between text paragraphs */
   overflow-x: auto !important;            /* Protect horizontal screen scroll */
   display: block !important;
 }
